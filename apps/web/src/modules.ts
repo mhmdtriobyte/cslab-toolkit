@@ -108,6 +108,15 @@ export const courses: Course[] = [
         icon: 'code',
         Component: lazy(() => import('@oslab/runner').then((m) => ({ default: m.Module }))),
       },
+      {
+        id: 'manual',
+        title: 'Manual',
+        summary:
+          'C and Python syntax side by side: types, input and output, loops, functions, arrays, strings, pointers, structs and more.',
+        topics: ['syntax', 'printf / print', 'pointers', 'lists & dicts', 'malloc'],
+        icon: 'book',
+        Component: lazy(() => import('@oslab/runner').then((m) => ({ default: m.ManualModule }))),
+      },
     ],
   },
   {

@@ -2,6 +2,7 @@ import { createRequire } from 'node:module';
 import { dirname } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { beforeAll, describe, expect, it } from 'vitest';
+import { TOPICS } from '../manual/content';
 import { PYTHON_HARNESS } from './pythonHarness';
 import { parseClangDiagnostics, type TraceStep } from './protocol';
 
@@ -142,6 +143,19 @@ describe('runner presets', () => {
       expect(r.out.length).toBeGreaterThan(0);
       expect(r.truncated).toBe(false);
     }
+  });
+});
+
+describe('manual', () => {
+  it.each(TOPICS.map((t) => [t.id, t] as const))('Python example "%s" runs cleanly', (_, t) => {
+    const r = run(t.python.example.code, t.python.example.stdin ?? '');
+    expect(r.error).toBeNull();
+    expect(r.err).toBe('');
+    expect(r.out.length).toBeGreaterThan(0);
+  });
+
+  it('every topic has a C example with main()', () => {
+    for (const t of TOPICS) expect(t.c.example.code).toContain('int main(void)');
   });
 });
 

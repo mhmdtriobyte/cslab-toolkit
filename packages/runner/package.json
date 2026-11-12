@@ -22,10 +22,12 @@
     "pyodide": "314.0.7"
   },
   "peerDependencies": {
-    "react": "^18.3.1"
+    "react": "^18.3.1",
+    "react-router-dom": "^6.27.0"
   },
   "devDependencies": {
     "@types/react": "^18.3.12",
-    "react": "^18.3.1"
+    "react": "^18.3.1",
+    "react-router-dom": "^6.27.0"
   }
 }

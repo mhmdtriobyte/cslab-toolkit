@@ -25,6 +25,7 @@ of a computer science degree. It is neutral enough for any university to use or 
 | Tool            | What students can do                                                                                                                                                                                                                                                                                                                           |
 | --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Code runner** | **Real Python 3.14** (Pyodide) and **real C** (clang 22) in the browser, with an Input box for `input()` / `scanf`, compiler warnings and errors on the right lines, and tracebacks. **Step through** replays the program line by line with every function's variables: lists and dicts in Python; arrays, structs, strings and pointers in C. |
+| **Manual**      | C and Python syntax by topic (types, input/output, operators, conditions, loops, functions, arrays and lists, strings, pointers and dicts, structs and classes, errors and `malloc`), Python, C or side by side, with search. Every example opens in the code runner with one click.                                                           |
 
 ### Data Structures and Algorithms
 
