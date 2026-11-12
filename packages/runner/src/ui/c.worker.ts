@@ -1,6 +1,6 @@
 import { runC, type RunClang } from '../engine/cRunner';
 import type { RunRequest, WorkerMessage } from '../engine/protocol';
-import { CLANG_URL } from './cdn';
+import { CLANG_URL } from './toolchains';
 
 interface ClangModule {
   runClang: RunClang;
@@ -19,7 +19,7 @@ function load(): Promise<RunClang> {
   clang ??= (async () => {
     post({
       type: 'status',
-      text: 'Downloading the C compiler (about 27 MB, only the first time)…',
+      text: 'Downloading the C compiler (a large download, only the first time)…',
     });
     const m = (await import(/* @vite-ignore */ CLANG_URL)) as ClangModule;
     let last = -1;
@@ -33,7 +33,7 @@ function load(): Promise<RunClang> {
           last = pct;
           post({
             type: 'status',
-            text: `Downloading the C compiler (about 27 MB, only the first time)… ${pct}%`,
+            text: `Downloading the C compiler (a large download, only the first time)… ${pct}%`,
             progress: doneLength / Math.max(1, totalLength),
           });
         },

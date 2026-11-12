@@ -359,11 +359,11 @@ export function RunnerModule({ examples }: ModuleProps) {
             </div>
           </Panel>
           <p className="text-xs text-slate-500 dark:text-slate-400">
-            The first run downloads the real{' '}
+            The first run loads the real{' '}
             {language === 'python'
-              ? 'Python interpreter (about 6 MB)'
-              : 'clang compiler (about 27 MB)'}{' '}
-            from jsDelivr; after that it is cached and works offline. Programs cannot read files or
+              ? 'Python interpreter (about 12 MB)'
+              : 'clang compiler (about 105 MB, 27 MB when compressed)'}{' '}
+            from this site; after that it is cached and works offline. Programs cannot read files or
             use the network, and they stop after 10 seconds.{' '}
             {language === 'c' &&
               'fork() and exec() need a real OS: use the Fork visualizer for those.'}

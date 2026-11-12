@@ -5,7 +5,7 @@ import {
   type TraceStep,
   type WorkerMessage,
 } from '../engine/protocol';
-import { PYODIDE_URL } from './cdn';
+import { PYODIDE_URL } from './toolchains';
 
 interface Pyodide {
   runPython(code: string): unknown;

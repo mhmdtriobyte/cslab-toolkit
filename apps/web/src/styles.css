@@ -36,8 +36,30 @@ html.presentation body {
   @apply text-black dark:text-white;
 }
 
-html.presentation section {
+/* Thicker outlines on panels only; plain page sections have no border at all. */
+html.presentation section.border {
   border-width: 2px;
+}
+
+/*
+ * Tailwind v4 draws borders in currentColor (black) unless a colour class is given. Default to the
+ * same soft greys the panels use, so a border without a colour never shows up as a hard black line.
+ */
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-slate-200);
+  }
+  .dark *,
+  .dark ::after,
+  .dark ::before,
+  .dark ::backdrop,
+  .dark ::file-selector-button {
+    border-color: var(--color-slate-700);
+  }
 }
 
 :focus-visible {

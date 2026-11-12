@@ -137,8 +137,8 @@ working when modules move between courses.
 
 ## Code runner design
 
-- **Python**: Pyodide (CPython 3.14 in WebAssembly) is imported from jsDelivr inside a module worker
-  on the first run. `pythonHarness.ts` wraps the student's code: `input()` reads the Input box and
+- **Python**: Pyodide (CPython 3.14 in WebAssembly) is imported inside a module worker on the first
+  run. `pythonHarness.ts` wraps the student's code: `input()` reads the Input box and
   echoes like a terminal, tracebacks are trimmed to the student's frames, and Step through uses
   `sys.settrace` to record every line with each frame's locals (capped at 2000 steps).
 - **C**: `@yowasp/clang` (clang + lld + wasi-libc in WebAssembly) compiles to `wasm32-wasi`, and
@@ -150,8 +150,10 @@ working when modules move between courses.
   recompiles the copy at `-O0`. JavaScript decodes values straight from WebAssembly memory using the
   wasm32 layout (ILP32), so arrays, structs, `char[]` strings and pointers show their real contents.
   Inserted text never adds lines, so line numbers stay correct.
-- The toolchains (about 6 MB and 27 MB compressed) are not bundled; the service worker caches them
-  (`toolchains` cache) after the first use. Runs stop after 10 s (20 s when tracing).
+- Both toolchains are npm dependencies of `packages/runner`. `apps/web/toolchains.ts` (a Vite plugin)
+  serves them at `/toolchains/pyodide/` and `/toolchains/clang/` in dev and copies them into
+  `dist/toolchains/` on build, so the app never calls a CDN. They are not precached (about 12 MB and
+  105 MB uncompressed); the service worker caches them (`toolchains` cache) on first use. Runs stop after 10 s (20 s when tracing).
 - The full C pipeline is checked with plain `node` against a local copy of the compiler, not in CI:
   Vitest's worker crashes when it loads the 100 MB toolchain. The pure parts (types, memory decoding,
   instrumentation, WASI stdin) have unit tests.

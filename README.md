@@ -40,9 +40,11 @@ of a computer science degree. It is neutral enough for any university to use or 
 | ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **SQL playground** | **Real SQLite** with university, company and shop databases, a schema browser with keys, every result set of a script, foreign keys enforced, and **exercises** that check the answer against a hidden solution. |
 
-The real Python and C toolchains are downloaded from jsDelivr the first time a student presses Run
-(about 6 MB for Python, 27 MB for C) and then cached for offline use. Everything else is part of the
-roughly 2 MB site.
+The real Python and C toolchains ship with the project as npm dependencies (`pyodide` and
+`@yowasp/clang`): after `pnpm i` they are on your machine and the site serves them itself, with no CDN.
+Students only download them the first time they press Run (about 6 MB for Python and 27 MB for C when
+compressed), and they are then cached for offline use. Everything else is part of the roughly 2 MB
+site.
 
 ## Use it in class
 

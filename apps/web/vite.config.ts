@@ -2,11 +2,13 @@ import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 import { VitePWA } from 'vite-plugin-pwa';
+import { toolchains } from './toolchains';
 
 export default defineConfig({
   plugins: [
     react(),
     tailwindcss(),
+    toolchains(),
     VitePWA({
       // A new deployment is picked up on the next visit; everything stays usable offline.
       registerType: 'autoUpdate',
@@ -28,13 +30,15 @@ export default defineConfig({
       },
       workbox: {
         globPatterns: ['**/*.{js,css,html,svg,png,woff2,wasm}'],
+        // The compilers are too big to precache; they are cached on first use (below).
+        globIgnores: ['toolchains/**'],
         navigateFallback: '/index.html',
         // The code editor and graph libraries make some chunks large; cache them anyway.
         maximumFileSizeToCacheInBytes: 4 * 1024 * 1024,
-        // The real Python and C toolchains come from jsDelivr on first use; keep them for offline.
+        // The real Python and C toolchains load on first use; keep them for offline.
         runtimeCaching: [
           {
-            urlPattern: /^https:\/\/cdn\.jsdelivr\.net\/npm\/(pyodide|@yowasp)\//,
+            urlPattern: /\/toolchains\//,
             handler: 'CacheFirst',
             options: {
               cacheName: 'toolchains',
@@ -47,6 +51,6 @@ export default defineConfig({
     }),
   ],
   build: { chunkSizeWarningLimit: 1200 },
-  // Module workers, so the code runner can import() Python and clang from the CDN.
+  // Module workers, so the code runner can import() Python and clang at run time.
   worker: { format: 'es' },
 });
