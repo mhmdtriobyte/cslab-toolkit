@@ -1,7 +1,9 @@
 # Architecture
 
-OS Lab Toolkit is a static, client-side web app. Every operating-system behaviour is simulated in
-TypeScript in the browser; there is no backend, no VM and no real process.
+CS Lab Toolkit is a static, client-side web app. Operating-system behaviour, data structures and
+graph algorithms are simulated in TypeScript in the browser; SQL runs on real SQLite (sql.js, bundled)
+and the code runner uses real CPython (Pyodide) and real clang, both compiled to WebAssembly. There
+is no backend.
 
 ## Packages
 
@@ -14,6 +16,9 @@ TypeScript in the browser; there is no backend, no VM and no real process.
 | `packages/sim-deadlock`    | Resource allocation graphs, Banker's algorithm, detection algorithm         |
 | `packages/sim-threads`     | Mini-assembly thread VM, mutex/semaphore/condition variables, explorer      |
 | `packages/sim-memory`      | Page replacement and contiguous memory allocation                           |
+| `packages/sim-dsa`         | Sorting, searching, BST/AVL, heaps, hash tables, graph algorithms (3 tools) |
+| `packages/sim-sql`         | SQLite in a worker, sample databases, schema browser, exercise checking     |
+| `packages/runner`          | Python and C runner: Pyodide and clang workers, WASI runtime, C tracer      |
 | `examples/<module>/*.json` | Presets, loaded by the web app and passed to modules                        |
 
 Each module package exports:
@@ -122,6 +127,34 @@ the list to the module as a prop.
 6. **Quiz** - a seeded template generator nests `fork()` in sequences, `if`, loops and `&&`/`||`, then
    uses the engine (deterministic run for counts, exhaustive run for "which output is possible") to
    compute answers.
+
+## Courses
+
+`apps/web/src/modules.ts` groups modules into courses (`courses`), each with an optional course
+`code`. The header shows one link per course, `/course/<id>` lists its tools and examples, and every
+module page shows a breadcrumb. Module routes (`/fork`, `/sql`...) never change, so old links keep
+working when modules move between courses.
+
+## Code runner design
+
+- **Python**: Pyodide (CPython 3.14 in WebAssembly) is imported from jsDelivr inside a module worker
+  on the first run. `pythonHarness.ts` wraps the student's code: `input()` reads the Input box and
+  echoes like a terminal, tracebacks are trimmed to the student's frames, and Step through uses
+  `sys.settrace` to record every line with each frame's locals (capped at 2000 steps).
+- **C**: `@yowasp/clang` (clang + lld + wasi-libc in WebAssembly) compiles to `wasm32-wasi`, and
+  `wasi.ts` is a small WASI runtime (stdin string, stdout/stderr callbacks, clock, random; no files).
+  stdout is reported as a terminal, so libc line-buffers it exactly like a real shell.
+- **C tracing**: clang's JSON AST gives every statement's offset and the variables in scope.
+  `cTrace.ts` inserts `__oslab_step(fn, line)` and `__oslab_var(id, &x)` calls before each statement
+  (adding braces around single-statement bodies, with a `cleanup` attribute to track returns), then
+  recompiles the copy at `-O0`. JavaScript decodes values straight from WebAssembly memory using the
+  wasm32 layout (ILP32), so arrays, structs, `char[]` strings and pointers show their real contents.
+  Inserted text never adds lines, so line numbers stay correct.
+- The toolchains (about 6 MB and 27 MB compressed) are not bundled; the service worker caches them
+  (`toolchains` cache) after the first use. Runs stop after 10 s (20 s when tracing).
+- The full C pipeline is checked with plain `node` against a local copy of the compiler, not in CI:
+  Vitest's worker crashes when it loads the 100 MB toolchain. The pure parts (types, memory decoding,
+  instrumentation, WASI stdin) have unit tests.
 
 ## Taste decisions (chosen for simplicity)
 

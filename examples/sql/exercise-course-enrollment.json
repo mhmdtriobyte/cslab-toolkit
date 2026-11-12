@@ -1,0 +1,14 @@
+{
+  "id": "exercise-course-enrollment",
+  "title": "Exercise: enrollment per course",
+  "description": "Count the students in every course, including courses nobody took.",
+  "input": {
+    "dataset": "university",
+    "query": "-- Write your query here, then press Run.\n",
+    "exercise": {
+      "prompt": "For every course, show its course_id and how many enrollments it has across all sections. Courses with no enrollments must appear with 0.",
+      "solution": "SELECT c.course_id, COUNT(e.student_id) AS enrolled\nFROM courses AS c\nLEFT JOIN sections AS s ON s.course_id = c.course_id\nLEFT JOIN enrollments AS e ON e.section_id = s.section_id\nGROUP BY c.course_id;",
+      "ordered": false
+    }
+  }
+}

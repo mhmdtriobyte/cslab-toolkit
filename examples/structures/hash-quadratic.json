@@ -1,0 +1,11 @@
+{
+  "id": "hash-quadratic",
+  "title": "Quadratic probing",
+  "description": "Offsets 1, 4, 9, 16... from the home slot.",
+  "input": {
+    "tab": "hash",
+    "hashMethod": "quadratic",
+    "hashSize": 11,
+    "hashOps": "insert 10 22 31 4 15"
+  }
+}

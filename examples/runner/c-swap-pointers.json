@@ -1,0 +1,10 @@
+{
+  "id": "c-swap-pointers",
+  "title": "C: swap with pointers",
+  "description": "Why swap(a, b) does nothing and swap(&a, &b) works.",
+  "input": {
+    "language": "c",
+    "c": "#include <stdio.h>\n\nvoid swap_values(int x, int y) {\n    int t = x;\n    x = y;\n    y = t;\n}\n\nvoid swap_pointers(int *x, int *y) {\n    int t = *x;\n    *x = *y;\n    *y = t;\n}\n\nint main(void) {\n    int a = 1, b = 2;\n    swap_values(a, b);\n    printf(\"after swap_values:   a=%d b=%d\\n\", a, b);\n    swap_pointers(&a, &b);\n    printf(\"after swap_pointers: a=%d b=%d\\n\", a, b);\n    return 0;\n}\n",
+    "cStdin": ""
+  }
+}

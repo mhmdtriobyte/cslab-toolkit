@@ -1,0 +1,10 @@
+{
+  "id": "c-out-of-bounds",
+  "title": "C: writing past the end of an array",
+  "description": "Undefined behaviour: in Step through the extra write lands on guard; the optimised Run may hide it. C never checks bounds.",
+  "input": {
+    "language": "c",
+    "c": "#include <stdio.h>\n\nint main(void) {\n    int guard = 111;\n    int a[3] = {1, 2, 3};\n    for (int i = 0; i <= 3; i++)   /* <= is one too many */\n        a[i] = 0;\n    printf(\"guard = %d\\n\", guard);\n    return 0;\n}\n",
+    "cStdin": ""
+  }
+}

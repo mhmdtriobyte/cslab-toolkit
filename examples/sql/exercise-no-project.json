@@ -1,0 +1,14 @@
+{
+  "id": "exercise-no-project",
+  "title": "Exercise: employees on no project",
+  "description": "Anti-join with NOT EXISTS or LEFT JOIN ... IS NULL.",
+  "input": {
+    "dataset": "company",
+    "query": "-- Write your query here, then press Run.\n",
+    "exercise": {
+      "prompt": "List the first and last names of employees who do not work on any project.",
+      "solution": "SELECT first_name, last_name\nFROM employees AS e\nWHERE NOT EXISTS (SELECT 1 FROM works_on AS w WHERE w.emp_id = e.emp_id);",
+      "ordered": false
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "id": "heap-sort",
+  "title": "Heap sort",
+  "description": "Build a max-heap, then move the maximum to the end, n - 1 times.",
+  "input": {
+    "tab": "sort",
+    "values": "4 10 3 5 1 8 2",
+    "algorithm": "heap"
+  }
+}

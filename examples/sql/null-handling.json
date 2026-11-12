@@ -1,0 +1,10 @@
+{
+  "id": "null-handling",
+  "title": "NULL is not a value",
+  "description": "= NULL never matches; use IS NULL. COUNT(*) vs COUNT(column).",
+  "input": {
+    "dataset": "university",
+    "query": "SELECT COUNT(*) AS all_rows, COUNT(gpa) AS with_gpa FROM students;\n\nSELECT name FROM students WHERE gpa = NULL;   -- always empty!\nSELECT name FROM students WHERE gpa IS NULL;  -- correct\n",
+    "exercise": null
+  }
+}

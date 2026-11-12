@@ -1,0 +1,10 @@
+{
+  "id": "transactions",
+  "title": "Transactions",
+  "description": "BEGIN, ROLLBACK and COMMIT.",
+  "input": {
+    "dataset": "shop",
+    "query": "BEGIN;\nUPDATE products SET stock = stock - 1 WHERE product_id = 1;\nSELECT name, stock FROM products WHERE product_id = 1;\nROLLBACK;\nSELECT name, stock FROM products WHERE product_id = 1;\n",
+    "exercise": null
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "id": "c-bubble-sort",
+  "title": "C: bubble sort an array",
+  "description": "Step through the nested loops and watch the array change.",
+  "input": {
+    "language": "c",
+    "c": "#include <stdio.h>\n\nint main(void) {\n    int a[6] = {5, 1, 4, 2, 8, 3};\n    int n = 6;\n    for (int i = 0; i < n - 1; i++) {\n        for (int j = 0; j < n - 1 - i; j++) {\n            if (a[j] > a[j + 1]) {\n                int t = a[j];\n                a[j] = a[j + 1];\n                a[j + 1] = t;\n            }\n        }\n    }\n    for (int i = 0; i < n; i++)\n        printf(\"%d \", a[i]);\n    printf(\"\\n\");\n    return 0;\n}\n",
+    "cStdin": ""
+  }
+}

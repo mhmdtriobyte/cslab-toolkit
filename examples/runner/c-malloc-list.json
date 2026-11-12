@@ -1,0 +1,10 @@
+{
+  "id": "c-malloc-list",
+  "title": "C: a linked list with malloc",
+  "description": "Build a list on the heap, print it and free it.",
+  "input": {
+    "language": "c",
+    "c": "#include <stdio.h>\n#include <stdlib.h>\n\nstruct node {\n    int value;\n    struct node *next;\n};\n\nstruct node *push(struct node *head, int v) {\n    struct node *n = malloc(sizeof *n);\n    n->value = v;\n    n->next = head;\n    return n;\n}\n\nint main(void) {\n    struct node *head = NULL;\n    for (int i = 1; i <= 3; i++)\n        head = push(head, i * 10);\n    for (struct node *p = head; p != NULL; p = p->next)\n        printf(\"%d -> \", p->value);\n    printf(\"NULL\\n\");\n    while (head) {\n        struct node *next = head->next;\n        free(head);\n        head = next;\n    }\n    return 0;\n}\n",
+    "cStdin": ""
+  }
+}

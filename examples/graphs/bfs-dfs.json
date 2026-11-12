@@ -1,0 +1,11 @@
+{
+  "id": "bfs-dfs",
+  "title": "BFS vs DFS",
+  "description": "The same graph explored breadth first; switch to DFS to compare.",
+  "input": {
+    "graph": "A B\nA C\nB D\nB E\nC F\nE F\nF G",
+    "directed": false,
+    "algorithm": "bfs",
+    "start": "A"
+  }
+}

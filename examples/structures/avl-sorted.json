@@ -1,0 +1,10 @@
+{
+  "id": "avl-sorted",
+  "title": "AVL with sorted inserts",
+  "description": "The same 1..7 stays perfectly balanced, height 3.",
+  "input": {
+    "tab": "tree",
+    "treeKind": "avl",
+    "treeOps": "insert 1 2 3 4 5 6 7"
+  }
+}

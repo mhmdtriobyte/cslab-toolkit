@@ -1,0 +1,10 @@
+{
+  "id": "py-lists",
+  "title": "Python: lists and loops",
+  "description": "Read numbers, build a list, find the maximum by hand.",
+  "input": {
+    "language": "python",
+    "python": "numbers = [int(x) for x in input(\"Numbers: \").split()]\nbiggest = numbers[0]\nfor n in numbers:\n    if n > biggest:\n        biggest = n\nprint(\"Max:\", biggest)\nprint(\"Sorted:\", sorted(numbers))\n",
+    "pythonStdin": "4 17 9 23 8\n"
+  }
+}

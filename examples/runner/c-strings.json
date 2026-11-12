@@ -1,0 +1,10 @@
+{
+  "id": "c-strings",
+  "title": "C: strings are char arrays",
+  "description": "Length by hand, the terminating \\0, and strcpy.",
+  "input": {
+    "language": "c",
+    "c": "#include <stdio.h>\n#include <string.h>\n\nint my_strlen(const char *s) {\n    int n = 0;\n    while (s[n] != '\\0')\n        n++;\n    return n;\n}\n\nint main(void) {\n    char word[10] = \"lab\";\n    char copy[10];\n    strcpy(copy, word);\n    copy[0] = 'L';\n    printf(\"%s %s %d %zu\\n\", word, copy, my_strlen(word), strlen(copy));\n    return 0;\n}\n",
+    "cStdin": ""
+  }
+}

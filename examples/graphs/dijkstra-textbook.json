@@ -1,0 +1,11 @@
+{
+  "id": "dijkstra-textbook",
+  "title": "Dijkstra shortest paths",
+  "description": "Weighted undirected graph from A.",
+  "input": {
+    "graph": "A B 4\nA C 2\nB C 5\nB D 10\nC E 3\nE D 4\nD F 11",
+    "directed": false,
+    "algorithm": "dijkstra",
+    "start": "A"
+  }
+}

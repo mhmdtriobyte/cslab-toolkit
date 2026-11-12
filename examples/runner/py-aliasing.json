@@ -1,0 +1,10 @@
+{
+  "id": "py-aliasing",
+  "title": "Python: two names, one list",
+  "description": "Assignment copies the reference, not the list.",
+  "input": {
+    "language": "python",
+    "python": "a = [1, 2, 3]\nb = a          # same list\nc = a[:]       # a copy\nb.append(4)\nprint(a, b, c)\n",
+    "pythonStdin": ""
+  }
+}

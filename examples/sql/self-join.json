@@ -1,0 +1,10 @@
+{
+  "id": "self-join",
+  "title": "Self join: employees and managers",
+  "description": "Join a table to itself through manager_id.",
+  "input": {
+    "dataset": "company",
+    "query": "SELECT e.first_name || ' ' || e.last_name AS employee,\n       m.first_name || ' ' || m.last_name AS manager\nFROM employees AS e\nLEFT JOIN employees AS m ON m.emp_id = e.manager_id\nORDER BY manager, employee;\n",
+    "exercise": null
+  }
+}

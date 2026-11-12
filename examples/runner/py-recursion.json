@@ -1,0 +1,10 @@
+{
+  "id": "py-recursion",
+  "title": "Python: recursion and the call stack",
+  "description": "Step through factorial and watch the frames pile up and unwind.",
+  "input": {
+    "language": "python",
+    "python": "def factorial(n):\n    if n <= 1:\n        return 1\n    return n * factorial(n - 1)\n\nprint(factorial(5))\n",
+    "pythonStdin": ""
+  }
+}

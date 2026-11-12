@@ -1,0 +1,10 @@
+{
+  "id": "avl-rotations",
+  "title": "AVL: all four rotations",
+  "description": "LL, RR, LR and RL cases, one after another.",
+  "input": {
+    "tab": "tree",
+    "treeKind": "avl",
+    "treeOps": "insert 30 20 10\ninsert 40 50\ninsert 5 7\ninsert 60 55"
+  }
+}

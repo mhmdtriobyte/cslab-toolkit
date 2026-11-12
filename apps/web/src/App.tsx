@@ -1,38 +1,39 @@
-import { Suspense } from 'react';
-import { Link, NavLink, Route, Routes } from 'react-router-dom';
+import { Suspense, useEffect } from 'react';
+import { Link, NavLink, Route, Routes, useLocation } from 'react-router-dom';
 import { cx, Icon, useTheme } from '@oslab/core';
-import { REPO_URL } from './config';
+import { APP_NAME, REPO_URL } from './config';
 import { examplesFor } from './examples';
-import { Home } from './Home';
-import { modules } from './modules';
+import { CoursePage, Home } from './Home';
+import { courseOf, courses, modules } from './modules';
 
 const toolbarButton =
   'inline-flex items-center gap-1.5 rounded-md border px-2 py-1 text-sm border-slate-300 text-slate-700 hover:bg-slate-100 dark:border-slate-600 dark:text-slate-200 dark:hover:bg-slate-800';
 
 function Header() {
   const { theme, setTheme, presentation, setPresentation } = useTheme();
+  const current = courseOf(useLocation().pathname.slice(1));
   return (
     <header className="z-20 border-b md:sticky md:top-0 border-slate-200 bg-white/90 backdrop-blur dark:border-slate-800 dark:bg-slate-900/90">
       <div className="mx-auto flex max-w-[1600px] flex-wrap items-center gap-x-4 gap-y-2 px-4 py-2">
         <Link to="/" className="flex items-center gap-2 font-bold text-slate-900 dark:text-white">
           <img src="/favicon.svg" alt="" className="h-7 w-7" />
-          OS Lab Toolkit
+          {APP_NAME}
         </Link>
-        <nav aria-label="Modules" className="flex flex-wrap gap-1">
-          {modules.map((m) => (
+        <nav aria-label="Courses" className="flex flex-wrap gap-1">
+          {courses.map((c) => (
             <NavLink
-              key={m.id}
-              to={`/${m.id}`}
+              key={c.id}
+              to={`/course/${c.id}`}
               className={({ isActive }) =>
                 cx(
                   'rounded-md px-2 py-1 text-sm',
-                  isActive
+                  isActive || current?.id === c.id
                     ? 'bg-indigo-100 font-semibold text-indigo-900 dark:bg-indigo-900 dark:text-indigo-100'
                     : 'text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800',
                 )
               }
             >
-              {m.title}
+              {c.short}
             </NavLink>
           ))}
         </nav>
@@ -85,6 +86,31 @@ function NotFound() {
   );
 }
 
+/** "Operating Systems › Fork visualizer" above every tool, and the browser tab title. */
+function Breadcrumb({ moduleId }: { moduleId: string }) {
+  const course = courseOf(moduleId);
+  const module = modules.find((m) => m.id === moduleId);
+  useEffect(() => {
+    document.title = module ? `${module.title} · ${APP_NAME}` : APP_NAME;
+    return () => {
+      document.title = APP_NAME;
+    };
+  }, [module]);
+  if (!course || !module) return null;
+  return (
+    <nav aria-label="Breadcrumb" className="mb-3 text-sm text-slate-500 dark:text-slate-400">
+      <Link to={`/course/${course.id}`} className="hover:underline">
+        {course.title}
+        {course.code ? ` (${course.code})` : ''}
+      </Link>
+      <span aria-hidden> › </span>
+      <span aria-current="page" className="text-slate-700 dark:text-slate-200">
+        {module.title}
+      </span>
+    </nav>
+  );
+}
+
 export function App() {
   return (
     <div className="flex min-h-screen flex-col">
@@ -99,15 +125,25 @@ export function App() {
         <Suspense fallback={<p className="p-8 text-center text-slate-500">Loading module…</p>}>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/course/:courseId" element={<CoursePage />} />
             {modules.map(({ id, Component }) => (
-              <Route key={id} path={`/${id}`} element={<Component examples={examplesFor(id)} />} />
+              <Route
+                key={id}
+                path={`/${id}`}
+                element={
+                  <>
+                    <Breadcrumb moduleId={id} />
+                    <Component examples={examplesFor(id)} />
+                  </>
+                }
+              />
             ))}
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
       </main>
       <footer className="border-t border-slate-200 px-4 py-3 text-center text-xs text-slate-500 dark:border-slate-800 dark:text-slate-400">
-        OS Lab Toolkit, open source teaching tools · MIT License · Everything runs in your browser.
+        {APP_NAME}, open source teaching tools · MIT License · Everything runs in your browser.
       </footer>
     </div>
   );

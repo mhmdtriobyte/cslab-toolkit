@@ -1,0 +1,10 @@
+{
+  "id": "ddl-constraints",
+  "title": "CREATE TABLE and constraints",
+  "description": "PRIMARY KEY, NOT NULL, CHECK and FOREIGN KEY violations, one at a time.",
+  "input": {
+    "dataset": "empty",
+    "query": "CREATE TABLE dept (\n  id   INTEGER PRIMARY KEY,\n  name TEXT NOT NULL\n);\nCREATE TABLE emp (\n  id      INTEGER PRIMARY KEY,\n  name    TEXT NOT NULL,\n  age     INTEGER CHECK (age >= 18),\n  dept_id INTEGER REFERENCES dept(id)\n);\nINSERT INTO dept VALUES (1, 'IT');\nINSERT INTO emp VALUES (1, 'Rana', 30, 1);\nSELECT * FROM emp;\n\n-- Each of these fails. Remove the one that errors to see the next.\nINSERT INTO emp VALUES (2, 'Omar', 16, 1);\nINSERT INTO emp VALUES (3, 'Lea', 25, 7);\n",
+    "exercise": null
+  }
+}

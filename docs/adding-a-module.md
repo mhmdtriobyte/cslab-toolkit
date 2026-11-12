@@ -71,7 +71,8 @@ export function DiskModule({ examples }: ModuleProps) {
 ## 4. Register it
 
 1. Add `"@oslab/sim-disk": "workspace:*"` to `apps/web/package.json` and run `pnpm i`.
-2. Add an entry to `apps/web/src/modules.ts`:
+2. Add an entry to the right course's `modules` list in `apps/web/src/modules.ts` (or add a new
+   course object):
 
 ```ts
 {
@@ -85,7 +86,7 @@ export function DiskModule({ examples }: ModuleProps) {
 ```
 
 The `id` is the route (`/disk`) and the examples folder (`examples/disk/`). The home page card, the
-navigation link and the examples list appear automatically.
+course page and the examples list appear automatically.
 
 ## 5. Add presets and docs
 

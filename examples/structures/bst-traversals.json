@@ -1,0 +1,10 @@
+{
+  "id": "bst-traversals",
+  "title": "BST traversals",
+  "description": "Pre-, in-, post- and level-order on the same tree.",
+  "input": {
+    "tab": "tree",
+    "treeKind": "bst",
+    "treeOps": "insert 50 30 70 20 40 60 80\npreorder\ninorder\npostorder\nlevelorder"
+  }
+}

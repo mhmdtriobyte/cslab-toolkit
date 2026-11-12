@@ -1,0 +1,11 @@
+{
+  "id": "dijkstra-directed",
+  "title": "Dijkstra on a directed graph",
+  "description": "One-way edges change which nodes are reachable.",
+  "input": {
+    "graph": "S A 10\nS B 5\nB A 3\nA C 1\nB C 9\nB D 2\nD C 6\nC E 4\nD E 7",
+    "directed": true,
+    "algorithm": "dijkstra",
+    "start": "S"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "exercise-cs-students",
+  "title": "Exercise: Computer Science majors",
+  "description": "Names of all Computer Science majors, A to Z.",
+  "input": {
+    "dataset": "university",
+    "query": "-- Write your query here, then press Run.\n",
+    "exercise": {
+      "prompt": "List the names of all students majoring in Computer Science, sorted alphabetically.",
+      "solution": "SELECT s.name\nFROM students AS s\nJOIN departments AS d ON d.dept_id = s.major_dept\nWHERE d.name = 'Computer Science'\nORDER BY s.name;",
+      "ordered": true
+    }
+  }
+}

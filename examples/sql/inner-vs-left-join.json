@@ -1,0 +1,10 @@
+{
+  "id": "inner-vs-left-join",
+  "title": "INNER vs LEFT JOIN",
+  "description": "Why the instructor with no department disappears from an inner join.",
+  "input": {
+    "dataset": "university",
+    "query": "-- Inner join: only instructors that have a department\nSELECT i.name, d.name AS department\nFROM instructors AS i\nJOIN departments AS d ON d.dept_id = i.dept_id;\n\n-- Left join: every instructor, NULL when there is no match\nSELECT i.name, d.name AS department\nFROM instructors AS i\nLEFT JOIN departments AS d ON d.dept_id = i.dept_id;\n",
+    "exercise": null
+  }
+}

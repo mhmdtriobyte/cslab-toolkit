@@ -1,0 +1,10 @@
+{
+  "id": "max-heap-priority-queue",
+  "title": "Max-heap as a priority queue",
+  "description": "Extracting everything returns the keys from largest to smallest.",
+  "input": {
+    "tab": "heap",
+    "heapKind": "max",
+    "heapOps": "insert 3 9 2 1 4 5\nextract 6"
+  }
+}

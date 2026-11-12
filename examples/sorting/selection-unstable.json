@@ -1,0 +1,10 @@
+{
+  "id": "selection-unstable",
+  "title": "Selection sort is not stable",
+  "description": "The first 5 is swapped past the second 5. Insertion sort keeps them in order.",
+  "input": {
+    "tab": "sort",
+    "values": "5 8 5 2 9",
+    "algorithm": "selection"
+  }
+}

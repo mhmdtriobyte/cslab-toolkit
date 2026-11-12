@@ -1,17 +1,18 @@
-# OS Lab Toolkit
+# CS Lab Toolkit
 
-**Open source teaching tools for operating systems courses.** Live at
-**[ostoolkit.triobyte.tech](https://ostoolkit.triobyte.tech)**. Paste C code that calls `fork()` and
-watch the process tree grow, step through CPU schedulers, run the Banker's algorithm, and hunt race
-conditions and deadlocks. Everything is simulated in the browser: no install, no server, no VM, and it
-keeps working offline once loaded.
+**Open source, interactive tools for computer science courses.** Live at
+**[ostoolkit.triobyte.tech](https://ostoolkit.triobyte.tech)**. Operating systems, programming in C and
+Python, data structures and algorithms, and databases, all in the browser: no install, no account, no
+server, and it keeps working offline once loaded.
 
-Built for an Operating Systems lab course (Linux commands, C, process creation, scheduling, deadlock,
-threads and memory), and neutral enough for any university to use or fork.
+It started as the toolkit for an Operating Systems lab (CSCI430L) and now covers the lab-heavy courses
+of a computer science degree. It is neutral enough for any university to use or fork.
 
-## Modules
+## Courses and tools
 
-| Module              | What students can do                                                                                                                                                                                                                                                                                                                                     |
+### Operating Systems (CSCI430L)
+
+| Tool                | What students can do                                                                                                                                                                                                                                                                                                                                     |
 | ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Fork visualizer** | Paste C with `fork`, `getpid`, `getppid`, `wait`, `waitpid`, `sleep`, `exit`, `kill`. See the process tree, a `ps -af` table with a **kill** button, zombies and orphans re-parented to init. Run with a fixed scheduler, be the scheduler yourself, or **explore every interleaving** to list all possible outputs. Includes a fork **quiz** generator. |
 | **CPU scheduling**  | FCFS, SJF, SRTF, Priority (preemptive or not) and Round Robin with an animated Gantt chart (idle gaps included), the ready queue at every time unit, waiting/turnaround/response times, CPU utilization, and a **compare all** mode that names the winner per metric.                                                                                    |
@@ -19,10 +20,35 @@ threads and memory), and neutral enough for any university to use or fork.
 | **Threads**         | A tiny atomic instruction set shown as pseudo-code. Race conditions (`counter++` losing updates), mutexes, semaphores, condition variables, producer-consumer, readers-writers and dining philosophers. Random, manual or exhaustive scheduling, with swimlanes and blocked markers.                                                                     |
 | **Memory**          | Page replacement with FIFO, LRU, Optimal and Clock (frame table, faults, hit ratio, reference bits and hand), a **Belady's anomaly** chart, and first / best / worst fit allocation with frees, hole merging and external fragmentation.                                                                                                                 |
 
+### Programming in C and Python
+
+| Tool            | What students can do                                                                                                                                                                                                                                                                                                                           |
+| --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Code runner** | **Real Python 3.14** (Pyodide) and **real C** (clang 22) in the browser, with an Input box for `input()` / `scanf`, compiler warnings and errors on the right lines, and tracebacks. **Step through** replays the program line by line with every function's variables: lists and dicts in Python; arrays, structs, strings and pointers in C. |
+
+### Data Structures and Algorithms
+
+| Tool                       | What students can do                                                                                                                                                                                                             |
+| -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Sorting & searching**    | Bubble, selection, insertion, merge, quick (Lomuto) and heap sort as animated bars with comparison and swap counts, a **compare all** table, and linear vs binary search with lo / mid / hi.                                     |
+| **Trees, heaps & hashing** | BST insert / delete (all three cases) / search and the four traversals, **AVL** with LL, RR, LR and RL rotations, min- and max-heaps as a tree and an array, and hash tables with chaining, linear, quadratic or double hashing. |
+| **Graph algorithms**       | Type an edge list and run BFS, DFS, Dijkstra, Prim, Kruskal or topological sort step by step, with the queue, stack or priority queue and the distance table.                                                                    |
+
+### Databases
+
+| Tool               | What students can do                                                                                                                                                                                             |
+| ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **SQL playground** | **Real SQLite** with university, company and shop databases, a schema browser with keys, every result set of a script, foreign keys enforced, and **exercises** that check the answer against a hidden solution. |
+
+The real Python and C toolchains are downloaded from jsDelivr the first time a student presses Run
+(about 6 MB for Python, 27 MB for C) and then cached for offline use. Everything else is part of the
+roughly 2 MB site.
+
 ## Use it in class
 
-- **Examples menu.** Every module has presets from the course (Fork Example 1 and 2, the orphan
-  exercise, the textbook scheduling and Banker's examples, dining philosophers…).
+- **Examples menu.** Every tool has presets (Fork Example 1 and 2, the orphan exercise, textbook
+  scheduling and Banker's examples, AVL rotations, Dijkstra, SQL exercises, C pointer bugs…). Each
+  course page lists them all.
 - **Share link.** Every input lives in the URL. Set up an exercise, press **Share link**, and paste the
   link in your LMS or chat: students open exactly that exercise. Links to presets look like
   `/fork#ex=orphan`.
@@ -84,13 +110,16 @@ Examples are plain JSON files in `examples/<module>/`. No code needed: see
 ## Project layout
 
 ```
-apps/web/               Vite + React shell: home page, router, PWA
+apps/web/               Vite + React shell: courses, home page, router, PWA
 packages/core/          Shared engine utilities (explorer, RNG, URL sharing) and UI kit
 packages/fork-visualizer/
 packages/sim-scheduling/
 packages/sim-deadlock/
 packages/sim-threads/
 packages/sim-memory/
+packages/sim-dsa/       Sorting, trees, heaps, hashing and graph algorithms
+packages/sim-sql/       SQLite playground
+packages/runner/        Python and C runner and tracer
 examples/               JSON presets, one folder per module
 docs/                   Architecture and contributor guides
 ```

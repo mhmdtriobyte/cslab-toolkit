@@ -13,9 +13,12 @@
   "dependencies": {
     "@oslab/core": "workspace:*",
     "@oslab/fork-visualizer": "workspace:*",
+    "@oslab/runner": "workspace:^",
     "@oslab/sim-deadlock": "workspace:*",
+    "@oslab/sim-dsa": "workspace:^",
     "@oslab/sim-memory": "workspace:*",
     "@oslab/sim-scheduling": "workspace:*",
+    "@oslab/sim-sql": "workspace:^",
     "@oslab/sim-threads": "workspace:*",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

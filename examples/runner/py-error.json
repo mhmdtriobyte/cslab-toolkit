@@ -1,0 +1,10 @@
+{
+  "id": "py-error",
+  "title": "Python: reading a traceback",
+  "description": "An IndexError deep inside a function, with the line highlighted.",
+  "input": {
+    "language": "python",
+    "python": "def last(items):\n    return items[len(items)]\n\nprint(last([1, 2, 3]))\n",
+    "pythonStdin": ""
+  }
+}

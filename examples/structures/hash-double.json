@@ -1,0 +1,11 @@
+{
+  "id": "hash-double",
+  "title": "Double hashing",
+  "description": "Collisions jump by a second hash instead of 1, avoiding primary clustering.",
+  "input": {
+    "tab": "hash",
+    "hashMethod": "double",
+    "hashSize": 13,
+    "hashOps": "insert 18 41 22 44 59 32 31 73"
+  }
+}

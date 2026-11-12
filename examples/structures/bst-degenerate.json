@@ -1,0 +1,10 @@
+{
+  "id": "bst-degenerate",
+  "title": "Sorted inserts make a linked list",
+  "description": "A plain BST with 1..7 inserted in order has height 7. Switch to AVL to compare.",
+  "input": {
+    "tab": "tree",
+    "treeKind": "bst",
+    "treeOps": "insert 1 2 3 4 5 6 7"
+  }
+}

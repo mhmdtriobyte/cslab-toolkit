@@ -1,0 +1,10 @@
+{
+  "id": "bst-delete-cases",
+  "title": "BST: the three delete cases",
+  "description": "Delete a leaf, a node with one child, and a node with two children.",
+  "input": {
+    "tab": "tree",
+    "treeKind": "bst",
+    "treeOps": "insert 50 30 70 20 40 60 80 65\ndelete 20\ndelete 60\ndelete 50"
+  }
+}

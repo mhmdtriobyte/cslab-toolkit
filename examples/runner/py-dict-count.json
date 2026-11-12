@@ -1,0 +1,10 @@
+{
+  "id": "py-dict-count",
+  "title": "Python: counting words with a dict",
+  "description": "A dictionary as a frequency table.",
+  "input": {
+    "language": "python",
+    "python": "text = input()\ncounts = {}\nfor word in text.lower().split():\n    counts[word] = counts.get(word, 0) + 1\nfor word, n in sorted(counts.items()):\n    print(word, n)\n",
+    "pythonStdin": "the cat and the hat and the bat\n"
+  }
+}

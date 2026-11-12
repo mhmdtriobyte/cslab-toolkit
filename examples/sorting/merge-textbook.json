@@ -1,0 +1,10 @@
+{
+  "id": "merge-textbook",
+  "title": "Merge sort",
+  "description": "The classic 38 27 43 3 9 82 10 example, divided and merged.",
+  "input": {
+    "tab": "sort",
+    "values": "38 27 43 3 9 82 10",
+    "algorithm": "merge"
+  }
+}

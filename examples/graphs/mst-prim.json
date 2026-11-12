@@ -1,0 +1,11 @@
+{
+  "id": "mst-prim",
+  "title": "Prim's MST",
+  "description": "Grow a tree from A by always taking the cheapest edge out of it.",
+  "input": {
+    "graph": "A B 7\nA D 5\nB C 8\nB D 9\nB E 7\nC E 5\nD E 15\nD F 6\nE F 8\nE G 9\nF G 11",
+    "directed": false,
+    "algorithm": "prim",
+    "start": "A"
+  }
+}

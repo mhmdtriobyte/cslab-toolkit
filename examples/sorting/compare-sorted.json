@@ -1,0 +1,10 @@
+{
+  "id": "compare-sorted",
+  "title": "Already sorted input",
+  "description": "Compare all algorithms on sorted data: insertion and bubble sort finish in one pass.",
+  "input": {
+    "tab": "sort",
+    "values": "1 2 3 4 5 6 7 8 9 10",
+    "algorithm": "compare"
+  }
+}

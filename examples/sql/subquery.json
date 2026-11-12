@@ -1,0 +1,10 @@
+{
+  "id": "subquery",
+  "title": "Subqueries",
+  "description": "Employees paid more than their department's average (correlated subquery).",
+  "input": {
+    "dataset": "company",
+    "query": "SELECT first_name, last_name, salary, dept_id\nFROM employees AS e\nWHERE salary > (\n  SELECT AVG(salary) FROM employees WHERE dept_id = e.dept_id\n)\nORDER BY dept_id;\n",
+    "exercise": null
+  }
+}

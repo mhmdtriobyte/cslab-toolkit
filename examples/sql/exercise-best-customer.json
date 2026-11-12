@@ -1,0 +1,14 @@
+{
+  "id": "exercise-best-customer",
+  "title": "Exercise: best customer",
+  "description": "Who spent the most on orders that were not cancelled?",
+  "input": {
+    "dataset": "shop",
+    "query": "-- Write your query here, then press Run.\n",
+    "exercise": {
+      "prompt": "Find the customer who spent the most in total on orders that were not cancelled. Show the name and the total (quantity * unit_price), one row.",
+      "solution": "SELECT c.name, SUM(oi.quantity * oi.unit_price) AS total\nFROM customers AS c\nJOIN orders AS o ON o.customer_id = c.customer_id\nJOIN order_items AS oi ON oi.order_id = o.order_id\nWHERE o.status <> 'cancelled'\nGROUP BY c.customer_id\nORDER BY total DESC\nLIMIT 1;",
+      "ordered": true
+    }
+  }
+}

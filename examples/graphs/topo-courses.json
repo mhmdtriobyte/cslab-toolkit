@@ -1,0 +1,11 @@
+{
+  "id": "topo-courses",
+  "title": "Topological sort: course prerequisites",
+  "description": "Which order can the courses be taken in?",
+  "input": {
+    "graph": "Prog1 Prog2\nProg2 DS\nDiscrete DS\nDS Algo\nDS DB\nDS OS\nArch OS",
+    "directed": true,
+    "algorithm": "topo",
+    "start": "Prog1"
+  }
+}

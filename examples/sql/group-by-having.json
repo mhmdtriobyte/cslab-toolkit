@@ -1,0 +1,10 @@
+{
+  "id": "group-by-having",
+  "title": "GROUP BY and HAVING",
+  "description": "Aggregates per group, and filtering groups.",
+  "input": {
+    "dataset": "university",
+    "query": "SELECT d.name, COUNT(*) AS students, ROUND(AVG(s.gpa), 2) AS avg_gpa\nFROM students AS s\nJOIN departments AS d ON d.dept_id = s.major_dept\nGROUP BY d.name\nHAVING COUNT(*) >= 2\nORDER BY students DESC;\n",
+    "exercise": null
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "id": "topo-cycle",
+  "title": "Topological sort with a cycle",
+  "description": "A -> B -> C -> A: no valid order exists.",
+  "input": {
+    "graph": "A B\nB C\nC A\nC D",
+    "directed": true,
+    "algorithm": "topo",
+    "start": "A"
+  }
+}

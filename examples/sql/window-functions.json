@@ -1,0 +1,10 @@
+{
+  "id": "window-functions",
+  "title": "Window functions",
+  "description": "RANK() and running totals with OVER (...).",
+  "input": {
+    "dataset": "company",
+    "query": "SELECT first_name, dept_id, salary,\n       RANK() OVER (PARTITION BY dept_id ORDER BY salary DESC) AS rank_in_dept,\n       SUM(salary) OVER (ORDER BY emp_id) AS running_total\nFROM employees\nWHERE dept_id IS NOT NULL;\n",
+    "exercise": null
+  }
+}

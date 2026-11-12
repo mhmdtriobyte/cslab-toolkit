@@ -1,0 +1,11 @@
+{
+  "id": "binary-search-missing",
+  "title": "Binary search: value not present",
+  "description": "Search for 40: lo and hi cross.",
+  "input": {
+    "tab": "search",
+    "searchValues": "2 5 8 12 16 23 38 56 72 91 99",
+    "target": 40,
+    "search": "binary"
+  }
+}

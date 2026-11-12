@@ -1,0 +1,10 @@
+{
+  "id": "select-where",
+  "title": "SELECT and WHERE",
+  "description": "Filter rows and pick columns.",
+  "input": {
+    "dataset": "university",
+    "query": "SELECT name, year, gpa\nFROM students\nWHERE year >= 3 AND gpa > 3.0\nORDER BY gpa DESC;\n",
+    "exercise": null
+  }
+}

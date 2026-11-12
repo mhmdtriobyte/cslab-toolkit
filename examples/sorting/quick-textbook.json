@@ -1,0 +1,10 @@
+{
+  "id": "quick-textbook",
+  "title": "Quick sort partitioning",
+  "description": "Lomuto partition with the last element as pivot.",
+  "input": {
+    "tab": "sort",
+    "values": "10 80 30 90 40 50 70",
+    "algorithm": "quick"
+  }
+}

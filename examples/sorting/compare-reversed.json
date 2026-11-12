@@ -1,0 +1,10 @@
+{
+  "id": "compare-reversed",
+  "title": "Reversed input (worst case)",
+  "description": "The worst case for insertion, bubble and Lomuto quick sort.",
+  "input": {
+    "tab": "sort",
+    "values": "10 9 8 7 6 5 4 3 2 1",
+    "algorithm": "compare"
+  }
+}

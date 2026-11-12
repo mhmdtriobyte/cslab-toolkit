@@ -1,0 +1,10 @@
+{
+  "id": "min-heap",
+  "title": "Min-heap insert and extract",
+  "description": "Sift up on insert, sift down on extract.",
+  "input": {
+    "tab": "heap",
+    "heapKind": "min",
+    "heapOps": "insert 35 33 42 10 14 19 27 44 26 31\nextract 2"
+  }
+}

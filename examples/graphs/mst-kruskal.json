@@ -1,0 +1,11 @@
+{
+  "id": "mst-kruskal",
+  "title": "Kruskal's MST",
+  "description": "Same graph: sort the edges and skip the ones that close a cycle.",
+  "input": {
+    "graph": "A B 7\nA D 5\nB C 8\nB D 9\nB E 7\nC E 5\nD E 15\nD F 6\nE F 8\nE G 9\nF G 11",
+    "directed": false,
+    "algorithm": "kruskal",
+    "start": "A"
+  }
+}
