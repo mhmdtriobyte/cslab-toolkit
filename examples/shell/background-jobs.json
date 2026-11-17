@@ -1,0 +1,9 @@
+{
+  "id": "background-jobs",
+  "title": "Background jobs and kill",
+  "description": "sleep in the background, ps, jobs and kill.",
+  "input": {
+    "mission": "processes",
+    "history": ["sleep 100 &", "sleep 200 &", "jobs", "ps", "kill %1", "jobs"]
+  }
+}

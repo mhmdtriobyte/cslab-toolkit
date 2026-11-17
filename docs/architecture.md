@@ -7,19 +7,20 @@ is no backend.
 
 ## Packages
 
-| Package                    | Contents                                                                    |
-| -------------------------- | --------------------------------------------------------------------------- |
-| `apps/web`                 | Vite + React shell: router, home page, module launcher, PWA setup           |
-| `packages/core`            | Pure utilities (`@oslab/core/engine`) and the shared UI kit (`@oslab/core`) |
-| `packages/fork-visualizer` | C-subset compiler + process VM, interleaving explorer, quiz generator, UI   |
-| `packages/sim-scheduling`  | CPU scheduling algorithms, compare mode, Gantt UI                           |
-| `packages/sim-deadlock`    | Resource allocation graphs, Banker's algorithm, detection algorithm         |
-| `packages/sim-threads`     | Mini-assembly thread VM, mutex/semaphore/condition variables, explorer      |
-| `packages/sim-memory`      | Page replacement and contiguous memory allocation                           |
-| `packages/sim-dsa`         | Sorting, searching, BST/AVL, heaps, hash tables, graph algorithms (3 tools) |
-| `packages/sim-sql`         | SQLite in a worker, sample databases, schema browser, exercise checking     |
-| `packages/runner`          | Python and C runner: Pyodide and clang workers, WASI runtime, C tracer      |
-| `examples/<module>/*.json` | Presets, loaded by the web app and passed to modules                        |
+| Package                    | Contents                                                                           |
+| -------------------------- | ---------------------------------------------------------------------------------- |
+| `apps/web`                 | Vite + React shell: router, home page, module launcher, PWA setup                  |
+| `packages/core`            | Pure utilities (`@oslab/core/engine`) and the shared UI kit (`@oslab/core`)        |
+| `packages/fork-visualizer` | C-subset compiler + process VM, interleaving explorer, quiz generator, UI          |
+| `packages/sim-scheduling`  | CPU scheduling algorithms, compare mode, Gantt UI                                  |
+| `packages/sim-deadlock`    | Resource allocation graphs, Banker's algorithm, detection algorithm                |
+| `packages/sim-threads`     | Mini-assembly thread VM, mutex/semaphore/condition variables, explorer             |
+| `packages/sim-memory`      | Page replacement and contiguous memory allocation                                  |
+| `packages/sim-shell`       | Simulated Linux shell: filesystem with permissions, parser, ~70 commands, missions |
+| `packages/sim-dsa`         | Sorting, searching, BST/AVL, heaps, hash tables, graph algorithms (3 tools)        |
+| `packages/sim-sql`         | SQLite in a worker, sample databases, schema browser, exercise checking            |
+| `packages/runner`          | Python and C runner: Pyodide and clang workers, WASI runtime, C tracer             |
+| `examples/<module>/*.json` | Presets, loaded by the web app and passed to modules                               |
 
 Each module package exports:
 
@@ -134,6 +135,18 @@ the list to the module as a prop.
 `code`. The header shows one link per course, `/course/<id>` lists its tools and examples, and every
 module page shows a breadcrumb. Module routes (`/fork`, `/sql`...) never change, so old links keep
 working when modules move between courses.
+
+## Linux terminal design
+
+- `fs.ts` is an in-memory filesystem with owner, group and mode bits, checked the way Linux does
+  (x to traverse, r to list, w+x on the parent to create or delete, sticky /tmp, root bypasses r/w).
+- `parser.ts` handles quotes, `$VAR`, `$(...)`, `$(( ))`, globs, pipes, redirections and `&& || ; &`;
+  `shell.ts` adds `if` / `for` / `while`, scripts with `$1`, background jobs and `sudo`.
+- Time is a virtual clock: `sleep 30` jumps ahead instantly, and background jobs finish when the clock
+  passes their end, so everything is deterministic.
+- The session is the list of commands typed (plus nano saves). A shared link replays it on a fresh
+  machine, so the link reproduces the exact terminal state.
+- Missions are data plus `check(shell)` functions; the test suite solves every mission from its hints.
 
 ## Code runner design
 

@@ -1,0 +1,14 @@
+{
+  "id": "pipeline-demo",
+  "title": "A pipeline, one stage at a time",
+  "description": "Build grep | cut | sort | uniq -c gradually.",
+  "input": {
+    "mission": "pipes",
+    "history": [
+      "cat logs/server.log",
+      "grep 'INFO  login' logs/server.log",
+      "grep 'INFO  login' logs/server.log | cut -d= -f2",
+      "grep 'INFO  login' logs/server.log | cut -d= -f2 | sort | uniq -c"
+    ]
+  }
+}

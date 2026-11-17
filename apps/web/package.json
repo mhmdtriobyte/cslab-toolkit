@@ -18,6 +18,7 @@
     "@oslab/sim-dsa": "workspace:^",
     "@oslab/sim-memory": "workspace:*",
     "@oslab/sim-scheduling": "workspace:*",
+    "@oslab/sim-shell": "workspace:^",
     "@oslab/sim-sql": "workspace:^",
     "@oslab/sim-threads": "workspace:*",
     "react": "^18.3.1",

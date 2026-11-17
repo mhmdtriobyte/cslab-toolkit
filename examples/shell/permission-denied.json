@@ -1,0 +1,15 @@
+{
+  "id": "permission-denied",
+  "title": "Permission denied, step by step",
+  "description": "Why ./hello.sh fails, then works after chmod u+x.",
+  "input": {
+    "mission": "permissions",
+    "history": [
+      "ls -l scripts",
+      "./scripts/hello.sh",
+      "chmod u+x scripts/hello.sh",
+      "ls -l scripts",
+      "./scripts/hello.sh"
+    ]
+  }
+}

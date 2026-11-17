@@ -6,12 +6,12 @@ Interactive tools for computer science courses, running entirely in the browser.
 
 ## Tools
 
-| Course                  | Tools                                                          |
-| ----------------------- | -------------------------------------------------------------- |
-| Operating Systems       | Fork visualizer, CPU scheduling, Deadlock, Threads, Memory     |
-| Programming (C, Python) | Code runner (real Python and C, step through), Manual          |
-| Data Structures         | Sorting & searching, Trees / heaps / hashing, Graph algorithms |
-| Databases               | SQL playground (SQLite, with exercises)                        |
+| Course                  | Tools                                                                      |
+| ----------------------- | -------------------------------------------------------------------------- |
+| Operating Systems       | Linux terminal, Fork visualizer, CPU scheduling, Deadlock, Threads, Memory |
+| Programming (C, Python) | Code runner (real Python and C, step through), Manual                      |
+| Data Structures         | Sorting & searching, Trees / heaps / hashing, Graph algorithms             |
+| Databases               | SQL playground (SQLite, with exercises)                                    |
 
 ## Run locally
 

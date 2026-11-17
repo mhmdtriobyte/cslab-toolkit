@@ -1,0 +1,14 @@
+{
+  "id": "script-loop",
+  "title": "A script with a for loop",
+  "description": "Loop over files and count their lines.",
+  "input": {
+    "mission": "scripting",
+    "history": [
+      "printf '#!/bin/bash\nfor f in *.txt; do\n  echo \"$f has $(wc -l < $f) line(s)\"\ndone\n' > count.sh",
+      "cat count.sh",
+      "chmod +x count.sh",
+      "./count.sh"
+    ]
+  }
+}

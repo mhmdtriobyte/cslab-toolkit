@@ -56,6 +56,9 @@ importers:
       '@oslab/sim-scheduling':
         specifier: workspace:*
         version: link:../../packages/sim-scheduling
+      '@oslab/sim-shell':
+        specifier: workspace:^
+        version: link:../../packages/sim-shell
       '@oslab/sim-sql':
         specifier: workspace:^
         version: link:../../packages/sim-sql
@@ -215,6 +218,19 @@ importers:
         version: 18.3.1
 
   packages/sim-scheduling:
+    dependencies:
+      '@oslab/core':
+        specifier: workspace:*
+        version: link:../core
+    devDependencies:
+      '@types/react':
+        specifier: ^18.3.12
+        version: 18.3.31
+      react:
+        specifier: ^18.3.1
+        version: 18.3.1
+
+  packages/sim-shell:
     dependencies:
       '@oslab/core':
         specifier: workspace:*

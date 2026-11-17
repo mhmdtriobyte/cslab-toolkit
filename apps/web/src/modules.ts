@@ -38,6 +38,15 @@ export const courses: Course[] = [
       'Processes, scheduling, deadlock, threads and memory: the OS lab from fork() to page replacement.',
     modules: [
       {
+        id: 'shell',
+        title: 'Linux terminal',
+        summary:
+          'A safe, simulated Linux shell with guided missions: files, permissions, pipes, processes and shell scripts.',
+        topics: ['ls / cd', 'chmod', 'pipes', 'ps / kill', 'bash scripts'],
+        icon: 'terminal',
+        Component: lazy(() => import('@oslab/sim-shell').then((m) => ({ default: m.Module }))),
+      },
+      {
         id: 'fork',
         title: 'Fork visualizer',
         summary:
